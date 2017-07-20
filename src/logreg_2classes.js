@@ -6,7 +6,7 @@ class LogisticRegressionTwoClasses {
         options = options || {};
         this.numSteps = options.numSteps || 500000;
         this.learningRate = options.learningRate || 5e-4;
-        this.weights = [];
+        this.weights = options.weights || [];
     }
 
     sigmoid(scores) {
@@ -46,6 +46,16 @@ class LogisticRegressionTwoClasses {
         var predictions = this.sigmoid(final_data);
         predictions = Matrix.columnVector(predictions).round();
         return predictions.to1DArray();
+    }
+
+    load(model) {
+        var newClassifier = new LogisticRegressionTwoClasses(model);
+        return newClassifier;
+    }
+
+    toJSON() {
+        var model = {numSteps: this.numSteps, learningRate: this.learningRate, weights = this.weights};
+        return model;
     }
 }
 

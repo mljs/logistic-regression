@@ -19,8 +19,8 @@ class LogisticRegression {
         options = options || {};
         this.numSteps = options. numSteps || 500000;
         this.learningRate = options.learningRate || 5e-4;
-        this.classifiers = [];
-        this.numberClasses = 0;
+        this.classifiers = options.classifier || [];
+        this.numberClasses = options.numberClasses || 0;
     }
 
     train(X, Y) {
@@ -52,6 +52,29 @@ class LogisticRegression {
             }
         }
         return finalResults;
+    }
+
+   
+    loadClassifier() {
+        for (var i = 0; i < this.numberClasses; i++){
+            this.classifiers[i] = LogisticRegressionTwoClasses.load(this.classifiers[i]);
+        }
+    }
+
+    load(model) {
+        var newClassifier = new LogisticRegression(model);
+        for (var i = 0; i < newClassifier.numberClasses; i++) {
+            newClassifier.classifiers[i] = LogisticRegressionTwoClasses.load(model.classifiers[i]);
+        }
+        return newClassifier;
+    }
+
+    toJSON() {
+        var model = {numSteps: this.numSteps, learningRate: this.learningRate, numberClasses: this.numberClasses, classifiers: new Array(this.numberClasses).fill(0)};
+        for (var i = 0; i < this.numberClasses; i++){
+            model.classifiers[i] = this.classifiers[i].toJSON()
+        }
+        return model;
     }
 }
 

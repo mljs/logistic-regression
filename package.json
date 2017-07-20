@@ -1,0 +1,14 @@
+{
+  "name": "logreg",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jajoe",
+  "license": "MIT",
+  "dependencies": {
+    "ml-matrix": "^3.0.0"
+  }
+}

@@ -19,7 +19,12 @@
     "type": "git",
     "url": "git+https://github.com/mljs/logistic-regression.git"
   },
-  "keywords": [],
+  "keywords": [
+    "machine learning",
+    "logistic regression",
+    "classification",
+    "classifier"
+  ],
   "author": "jajoe",
   "license": "MIT",
   "bugs": {

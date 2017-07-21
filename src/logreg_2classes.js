@@ -1,64 +1,60 @@
-'use strict';
+import Matrix from 'ml-matrix';
 
-const {Matrix} = require('ml-matrix');
-
-class LogisticRegressionTwoClasses {
-
-    constructor(options) {
-        options = options || {};
+export default class LogisticRegressionTwoClasses {
+    constructor(options = {}) {
         this.numSteps = options.numSteps || 500000;
         this.learningRate = options.learningRate || 5e-4;
-        this.weights = options.weights || [];
-    }
-
-    sigmoid(scores) {
-        scores = scores.to1DArray();
-        var result = [];
-        for (var i = 0; i < scores.length; i++) {
-            result.push(1 / (1 + Math.exp(-scores[i])));
-        }
-        return result;
+        this.weights = options.weights ? Matrix.checkMatrix(options.weights) : null;
     }
 
     train(features, target) {
         var weights = Matrix.zeros(1, features.columns);
-    
+
         for (var step = 0; step < this.numSteps; step++) {
-            var scores = features.mmul(weights.transpose());
-            var predictions = this.sigmoid(scores);
+            var scores = features.mmul(weights.transposeView());
+            var predictions = sigmoid(scores);
 
             // Update weights with gradient
-            var output_error_signal = Matrix.columnVector(predictions).neg().add(target);
-            var gradient = features.transpose().mmul(output_error_signal);
-            weights = weights.add(gradient.mul(this.learningRate).transpose());
+            var outputErrorSignal = Matrix.columnVector(predictions).neg().add(target);
+            var gradient = features.transposeView().mmul(outputErrorSignal);
+            weights = weights.add(gradient.mul(this.learningRate).transposeView());
         }
 
-        this.weights = weights
+        this.weights = weights;
     }
 
     testScores(features) {
-        var final_data = features.mmul(this.weights.transpose());
-        var predictions = this.sigmoid(final_data);
+        var finalData = features.mmul(this.weights.transposeView());
+        var predictions = sigmoid(finalData);
         predictions = Matrix.columnVector(predictions);
         return predictions.to1DArray();
     }
 
     predict(features) {
-        var final_data = features.mmul(this.weights.transpose());
-        var predictions = this.sigmoid(final_data);
+        var finalData = features.mmul(this.weights.transposeView());
+        var predictions = sigmoid(finalData);
         predictions = Matrix.columnVector(predictions).round();
         return predictions.to1DArray();
     }
 
-    load(model) {
-        var newClassifier = new LogisticRegressionTwoClasses(model);
-        return newClassifier;
+    static load(model) {
+        return new LogisticRegressionTwoClasses(model);
     }
 
     toJSON() {
-        var model = {numSteps: this.numSteps, learningRate: this.learningRate, weights: this.weights};
-        return model;
+        return {
+            numSteps: this.numSteps,
+            learningRate: this.learningRate,
+            weights: this.weights
+        };
     }
 }
 
-module.exports = LogisticRegressionTwoClasses;
+function sigmoid(scores) {
+    scores = scores.to1DArray();
+    var result = [];
+    for (var i = 0; i < scores.length; i++) {
+        result.push(1 / (1 + Math.exp(-scores[i])));
+    }
+    return result;
+}

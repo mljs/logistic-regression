@@ -1,8 +1,17 @@
 # logistic-regression
 
+  [![NPM version][npm-image]][npm-url]
+  [![build status][travis-image]][travis-url]
+  [![npm download][download-image]][download-url]
+
 This is an implementation of the logistic regression. When there are more than 2 classes, the method used is the *One VS All*.
 
-## Examples : 
+## Installation
+
+`$ npm install --save ml-logistic-regression`
+
+## Usage
+
 ```javascript
 const {Matrix} = require('ml-matrix');
 
@@ -22,3 +31,14 @@ logreg.train(X,Y);
 var finalResults = logreg.predict(Xtest);
 // Now, you can compare finalResults with the Ytest, which is what you wanted to have.
 ```
+
+## License
+
+  [MIT](./LICENSE)
+
+[npm-image]: https://img.shields.io/npm/v/ml-logistic-regression.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/ml-logistic-regression
+[travis-image]: https://img.shields.io/travis/mljs/logistic-regression/master.svg?style=flat-square
+[travis-url]: https://travis-ci.org/mljs/logistic-regression
+[download-image]: https://img.shields.io/npm/dm/ml-logistic-regression.svg?style=flat-square
+[download-url]: https://npmjs.org/package/ml-logistic-regression

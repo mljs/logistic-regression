@@ -2,9 +2,14 @@
   "name": "ml-logistic-regression",
   "version": "0.0.0",
   "description": "Logistic regression",
-  "main": "src/logreg",
+  "main": "lib/logreg",
+  "module": "src/logreg",
   "scripts": {
-    "test": "jest"
+    "eslint": "eslint src",
+    "eslint-fix": "npm run eslint -- --fix",
+    "prepublishOnly": "rollup -c",
+    "test": "run-s testonly eslint",
+    "testonly": "jest"
   },
   "author": "jajoe",
   "license": "MIT",
@@ -12,6 +17,12 @@
     "ml-matrix": "^5.0.0"
   },
   "devDependencies": {
-    "jest": "^20.0.4"
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
+    "eslint": "^4.2.0",
+    "eslint-config-cheminfo": "^1.8.0",
+    "eslint-plugin-no-only-tests": "^2.0.0",
+    "jest": "^20.0.4",
+    "npm-run-all": "^4.0.2",
+    "rollup": "^0.45.2"
   }
 }

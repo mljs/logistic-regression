@@ -4,6 +4,10 @@
   "description": "Logistic regression",
   "main": "lib/logreg",
   "module": "src/logreg",
+  "files": [
+    "lib",
+    "src"
+  ],
   "scripts": {
     "eslint": "eslint src",
     "eslint-fix": "npm run eslint -- --fix",
@@ -11,8 +15,20 @@
     "test": "run-s testonly eslint",
     "testonly": "jest"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mljs/logistic-regression.git"
+  },
+  "keywords": [],
   "author": "jajoe",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mljs/logistic-regression/issues"
+  },
+  "homepage": "https://github.com/mljs/logistic-regression#readme",
+  "jest": {
+    "testEnvironment": "node"
+  },
   "dependencies": {
     "ml-matrix": "^5.0.0"
   },

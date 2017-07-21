@@ -22,7 +22,7 @@ export default class LogisticRegression {
     }
 
     train(X, Y) {
-        this.numberClasses = new Set(Y).size;
+        this.numberClasses = new Set(Y.to1DArray()).size;
         this.classifiers = new Array(this.numberClasses);
 
         // train the classifiers

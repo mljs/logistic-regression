@@ -22,7 +22,7 @@ class LogisticRegressionTwoClasses {
 
     train(features, target) {
         var weights = Matrix.zeros(1, features.columns);
-    
+
         for (var step = 0; step < this.numSteps; step++) {
             var scores = features.mmul(weights.transpose());
             var predictions = this.sigmoid(scores);
@@ -33,7 +33,7 @@ class LogisticRegressionTwoClasses {
             weights = weights.add(gradient.mul(this.learningRate).transpose());
         }
 
-        this.weights = weights
+        this.weights = weights;
     }
 
     testScores(features) {

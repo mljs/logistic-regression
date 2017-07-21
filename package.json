@@ -1,17 +1,45 @@
 {
   "name": "ml-logistic-regression",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Logistic regression",
-  "main": "src/logreg",
+  "main": "./src/index.js",
+  "files": [
+    "src"
+  ],
   "scripts": {
-    "test": "jest"
+    "eslint": "eslint src test",
+    "eslint-fix": "npm run eslint -- --fix",
+    "test": "run-s testonly eslint",
+    "testonly": "jest"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mljs/logistic-regression.git"
+  },
+  "keywords": [
+    "machine",
+    "learning",
+    "data",
+    "mining",
+    "datamining"
+  ],
   "author": "jajoe",
   "license": "MIT",
-  "dependencies": {
-    "ml-matrix": "^5.0.0"
+  "bugs": {
+    "url": "https://github.com/mljs/logistic-regression/issues"
+  },
+  "homepage": "https://github.com/mljs/logistic-regression#readme",
+  "jest": {
+    "testEnvironment": "node"
   },
   "devDependencies": {
-    "jest": "^20.0.4"
+    "eslint": "^4.2.0",
+    "eslint-config-cheminfo": "^1.8.0",
+    "eslint-plugin-no-only-tests": "^2.0.0",
+    "jest": "^20.0.4",
+    "npm-run-all": "^4.0.2"
+  },
+  "dependencies": {
+    "ml-matrix": "^5.0.0"
   }
 }

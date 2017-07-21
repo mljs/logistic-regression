@@ -1,15 +1,15 @@
 {
-  "name": "ml-logreg",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "ml-logistic-regression",
+  "version": "0.0.0",
+  "description": "Logistic regression",
+  "main": "src/logreg",
   "scripts": {
     "test": "jest"
   },
   "author": "jajoe",
   "license": "MIT",
   "dependencies": {
-    "ml-matrix": "^3.0.0"
+    "ml-matrix": "^5.0.0"
   },
   "devDependencies": {
     "jest": "^20.0.4"

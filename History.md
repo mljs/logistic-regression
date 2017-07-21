@@ -1,3 +1,13 @@
+<a name="1.0.2"></a>
+## [1.0.2](https://github.com/mljs/logistic-regression/compare/v1.0.1...v1.0.2) (2017-07-21)
+
+
+### Bug Fixes
+
+* Bug fixed ([da247e8](https://github.com/mljs/logistic-regression/commit/da247e8))
+
+
+
 <a name="1.0.1"></a>
 ## [1.0.1](https://github.com/mljs/logistic-regression/compare/v1.0.0...v1.0.1) (2017-07-21)
 

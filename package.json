@@ -4,11 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --require should-approximately-deep --reporter mocha-better-spec-reporter --recursive"
   },
   "author": "jajoe",
   "license": "MIT",
   "dependencies": {
     "ml-matrix": "^3.0.0"
+  },
+  "devDependencies": {
+    "mocha": "^3.0.1",
+    "mocha-better-spec-reporter": "^3.0.1",
+    "should": "^11.1.0",
+    "should-approximately-deep": "^1.1.0"
   }
 }

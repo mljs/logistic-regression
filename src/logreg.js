@@ -4,7 +4,7 @@ const LogisticRegressionTwoClasses = require('./logreg_2classes');
 function transform_classes_for_one_vs_all(Y, oneClass){
     y = Y.to1DArray();
     for (var i = 0; i < y.length; i++){
-        if (y[i] == oneClass) {
+        if (y[i] === oneClass) {
             y[i] = 0;
         } else {
             y[i] = 1;
@@ -36,7 +36,7 @@ class LogisticRegression {
         }
     }
 
-    test(Xtest) {
+    predict(Xtest) {
         var resultsOneClass = new Array(this.numberClasses).fill(0);
         for (var i = 0; i < this.numberClasses; i++){
             resultsOneClass[i]= this.classifiers[i].testScores(Xtest);

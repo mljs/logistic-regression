@@ -41,7 +41,7 @@ class LogisticRegressionTwoClasses {
         return predictions.to1DArray();
     }
 
-    test(features) {
+    predict(features) {
         var final_data = features.mmul(this.weights.transpose());
         var predictions = this.sigmoid(final_data);
         predictions = Matrix.columnVector(predictions).round();

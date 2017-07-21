@@ -1,5 +1,5 @@
 export default {
-  entry: 'src/index.js',
+  entry: 'src/logreg.js',
   format: 'cjs',
-  dest: 'lib/index.js'
+  dest: 'lib/logreg.js'
 };

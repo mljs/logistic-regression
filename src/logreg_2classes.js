@@ -54,7 +54,7 @@ class LogisticRegressionTwoClasses {
     }
 
     toJSON() {
-        var model = {numSteps: this.numSteps, learningRate: this.learningRate, weights = this.weights};
+        var model = {numSteps: this.numSteps, learningRate: this.learningRate, weights: this.weights};
         return model;
     }
 }

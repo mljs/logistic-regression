@@ -10,10 +10,10 @@ var Y = Matrix.columnVector([0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1]);
 var Xtest = new Matrix([[0, -2], [1, 0.5], [1.5, -1], [1, 4.5], [2, 3.5], [1.5, 5]])
 var Ytest = Matrix.columnVector([0, 0, 0, 1, 1, 1]);
 
-var logreg = new LogisticRegressionTwoClasses(num_steps = 500000, learning_rate = 5e-4);
+var logreg = new LogisticRegressionTwoClasses(numSteps = 500000, learningRate = 5e-4);
 logreg.train(X, Y);
 // console.log(logreg.weights); // results should be [-12.07083366   9.94427349]
-var results = logreg.test(Xtest); // compute results of the training set
+var results = logreg.predict(Xtest); // compute results of the training set
 console.log(results);
 
 
@@ -29,7 +29,7 @@ var Y = Matrix.columnVector([0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 2, 
 var Xtest = new Matrix([[0, -2], [1, 0.5], [1.5, -1], [1, 2.5], [2, 3.5], [1.5, 4], [1, 10.5], [2.5, 10.5], [2, 11.5]])
 var Ytest = Matrix.columnVector([0, 0, 0, 1, 1, 1, 2, 2, 2]);
 
-var logreg = new LogisticRegression(num_steps = 10000000, learning_rate = 5e-5);
+var logreg = new LogisticRegression(numSteps = 10000000, learningRate = 5e-5);
 logreg.train(X,Y);
-var finalResults = logreg.test(Xtest);
+var finalResults = logreg.predict(Xtest);
 console.log(finalResults);

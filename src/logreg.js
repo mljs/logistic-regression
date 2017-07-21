@@ -1,8 +1,10 @@
+'use strict';
+
 const {Matrix} = require('ml-matrix');
 const LogisticRegressionTwoClasses = require('./logreg_2classes');
 
 function transform_classes_for_one_vs_all(Y, oneClass){
-    y = Y.to1DArray();
+    var y = Y.to1DArray();
     for (var i = 0; i < y.length; i++){
         if (y[i] === oneClass) {
             y[i] = 0;

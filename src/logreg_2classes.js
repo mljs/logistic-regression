@@ -1,3 +1,5 @@
+'use strict';
+
 const {Matrix} = require('ml-matrix');
 
 class LogisticRegressionTwoClasses {

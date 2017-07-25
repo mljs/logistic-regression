@@ -24,7 +24,7 @@ var Xtest = new Matrix([[0, -2], [1, 0.5], [1.5, -1], [1, 2.5], [2, 3.5], [1.5, 
 var Ytest = Matrix.columnVector([0, 0, 0, 1, 1, 1, 2, 2, 2]);
 
 // we will train our model
-var logreg = new LogisticRegression(numSteps = 1000, learningRate = 5e-3);
+var logreg = new LogisticRegression({numSteps = 1000, learningRate = 5e-3});
 logreg.train(X,Y);
 
 // we try to predict the test set

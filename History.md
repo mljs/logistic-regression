@@ -1,3 +1,12 @@
+# [2.0.0](https://github.com/mljs/logistic-regression/compare/v1.0.2...v2.0.0) (2020-05-03)
+
+
+### Bug Fixes
+
+* README.md ([bab5f0f](https://github.com/mljs/logistic-regression/commit/bab5f0f281a9a127b67a375554e7da6ea345609c))
+
+
+
 <a name="1.0.2"></a>
 ## [1.0.2](https://github.com/mljs/logistic-regression/compare/v1.0.1...v1.0.2) (2017-07-21)
 

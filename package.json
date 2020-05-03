@@ -1,6 +1,6 @@
 {
   "name": "ml-logistic-regression",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "Logistic regression",
   "main": "lib/logreg.js",
   "module": "src/logreg.js",

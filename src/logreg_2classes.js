@@ -1,60 +1,59 @@
 import Matrix from 'ml-matrix';
 
 export default class LogisticRegressionTwoClasses {
-    constructor(options = {}) {
-        this.numSteps = options.numSteps || 500000;
-        this.learningRate = options.learningRate || 5e-4;
-        this.weights = options.weights ? Matrix.checkMatrix(options.weights) : null;
+  constructor(options = {}) {
+    const { numSteps = 50000, learningRate = 5e-4, weights = null } = options;
+    this.numSteps = numSteps;
+    this.learningRate = learningRate;
+    this.weights = weights ? Matrix.checkMatrix(weights) : null;
+  }
+
+  train(features, target) {
+    let weights = Matrix.zeros(1, features.columns);
+
+    for (let step = 0; step < this.numSteps; step++) {
+      const scores = features.mmul(weights.transpose());
+      const predictions = sigmoid(scores);
+
+      // Update weights with gradient
+      const outputErrorSignal = Matrix.columnVector(predictions)
+        .neg()
+        .add(target);
+      const gradient = features.transpose().mmul(outputErrorSignal);
+      weights = weights.add(gradient.mul(this.learningRate).transpose());
     }
 
-    train(features, target) {
-        var weights = Matrix.zeros(1, features.columns);
+    this.weights = weights;
+  }
 
-        for (var step = 0; step < this.numSteps; step++) {
-            var scores = features.mmul(weights.transposeView());
-            var predictions = sigmoid(scores);
+  testScores(features) {
+    const finalData = features.mmul(this.weights.transpose());
+    return sigmoid(finalData);
+  }
 
-            // Update weights with gradient
-            var outputErrorSignal = Matrix.columnVector(predictions).neg().add(target);
-            var gradient = features.transposeView().mmul(outputErrorSignal);
-            weights = weights.add(gradient.mul(this.learningRate).transposeView());
-        }
+  predict(features) {
+    const finalData = features.mmul(this.weights.transpose());
+    return sigmoid(finalData).map(Math.round);
+  }
 
-        this.weights = weights;
-    }
+  static load(model) {
+    return new LogisticRegressionTwoClasses(model);
+  }
 
-    testScores(features) {
-        var finalData = features.mmul(this.weights.transposeView());
-        var predictions = sigmoid(finalData);
-        predictions = Matrix.columnVector(predictions);
-        return predictions.to1DArray();
-    }
-
-    predict(features) {
-        var finalData = features.mmul(this.weights.transposeView());
-        var predictions = sigmoid(finalData);
-        predictions = Matrix.columnVector(predictions).round();
-        return predictions.to1DArray();
-    }
-
-    static load(model) {
-        return new LogisticRegressionTwoClasses(model);
-    }
-
-    toJSON() {
-        return {
-            numSteps: this.numSteps,
-            learningRate: this.learningRate,
-            weights: this.weights
-        };
-    }
+  toJSON() {
+    return {
+      numSteps: this.numSteps,
+      learningRate: this.learningRate,
+      weights: this.weights,
+    };
+  }
 }
 
 function sigmoid(scores) {
-    scores = scores.to1DArray();
-    var result = [];
-    for (var i = 0; i < scores.length; i++) {
-        result.push(1 / (1 + Math.exp(-scores[i])));
-    }
-    return result;
+  scores = scores.to1DArray();
+  let result = [];
+  for (let i = 0; i < scores.length; i++) {
+    result.push(1 / (1 + Math.exp(-scores[i])));
+  }
+  return result;
 }

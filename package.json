@@ -2,8 +2,8 @@
   "name": "ml-logistic-regression",
   "version": "1.0.2",
   "description": "Logistic regression",
-  "main": "lib/logreg",
-  "module": "src/logreg",
+  "main": "lib/logreg.js",
+  "module": "src/logreg.js",
   "files": [
     "lib",
     "src"
@@ -12,8 +12,9 @@
     "eslint": "eslint src",
     "eslint-fix": "npm run eslint -- --fix",
     "prepublishOnly": "rollup -c",
-    "test": "run-s testonly eslint",
-    "testonly": "jest"
+    "test": "npm run test-coverage && npm run eslint",
+    "test-coverage": "jest --coverage",
+    "test-only": "jest"
   },
   "repository": {
     "type": "git",
@@ -35,15 +36,25 @@
     "testEnvironment": "node"
   },
   "dependencies": {
-    "ml-matrix": "^5.0.0"
+    "ml-matrix": "^6.5.0"
   },
   "devDependencies": {
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
-    "eslint": "^4.2.0",
-    "eslint-config-cheminfo": "^1.8.0",
-    "eslint-plugin-no-only-tests": "^2.0.0",
-    "jest": "^20.0.4",
-    "npm-run-all": "^4.0.2",
-    "rollup": "^0.45.2"
+    "@babel/plugin-transform-modules-commonjs": "^7.9.6",
+    "@types/jest": "^25.2.1",
+    "eslint": "^6.8.0",
+    "eslint-config-cheminfo": "^3.0.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jest": "^23.8.2",
+    "eslint-plugin-prettier": "^3.1.3",
+    "jest": "^25.5.4",
+    "prettier": "^2.0.5",
+    "rollup": "^2.7.6"
+  },
+  "prettier": {
+    "arrowParens": "always",
+    "semi": true,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "all"
   }
 }

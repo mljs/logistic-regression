@@ -1,5 +1,7 @@
 export default {
-  entry: 'src/logreg.js',
-  format: 'cjs',
-  dest: 'lib/logreg.js'
+  input: 'src/logreg.js',
+  output: {
+    format: 'cjs',
+    file: 'lib/logreg.js',
+  },
 };

@@ -14,6 +14,7 @@ This is an implementation of the logistic regression. When there are more than 2
 ## Usage
 
 ```js
+const LogisticRegression = require('ml-logistic-regression');
 const { Matrix } = require('ml-matrix');
 
 // Our training set (X,Y).

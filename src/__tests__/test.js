@@ -1,12 +1,12 @@
-import Matrix from 'ml-matrix';
+import { Matrix } from 'ml-matrix';
 
 import LogisticRegression from '../logreg.js';
 import LogisticRegressionTwoClasses from '../logreg_2classes.js';
 
-describe('Logistic Regression algorithm', function () {
+describe('Logistic Regression algorithm', () => {
   // test for 2 classes
 
-  it('Test of the function used with 2 classes', function () {
+  it('Test of the function used with 2 classes', () => {
     let X = new Matrix([
       [0, -1],
       [1, 0],
@@ -26,22 +26,7 @@ describe('Logistic Regression algorithm', function () {
       [3, 4],
     ]);
     let Y = Matrix.columnVector([
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
+      0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1,
     ]);
 
     let Xtest = new Matrix([
@@ -62,7 +47,7 @@ describe('Logistic Regression algorithm', function () {
     expect(results).toStrictEqual([0, 0, 0, 1, 1, 1]);
   });
 
-  it('Test of the prediction with 3 classes', function () {
+  it('Test of the prediction with 3 classes', () => {
     let X = new Matrix([
       [0, -1],
       [1, 0],
@@ -88,28 +73,7 @@ describe('Logistic Regression algorithm', function () {
       [3, 11],
     ]);
     let Y = Matrix.columnVector([
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      2,
-      2,
-      2,
-      2,
-      2,
-      2,
+      0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2,
     ]);
 
     let Xtest = new Matrix([
@@ -156,28 +120,7 @@ describe('Logistic Regression algorithm', function () {
       [3, 11],
     ]);
     let Y = Matrix.columnVector([
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      2,
-      2,
-      2,
-      2,
-      2,
-      2,
+      0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2,
     ]);
 
     let Xtest = new Matrix([

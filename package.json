@@ -11,10 +11,11 @@
   "scripts": {
     "eslint": "eslint src",
     "eslint-fix": "npm run eslint -- --fix",
-    "prepublishOnly": "rollup -c",
-    "test": "npm run test-coverage && npm run eslint",
-    "test-coverage": "jest --coverage",
-    "test-only": "jest"
+    "prepack": "rollup -c",
+    "prettier": "prettier --check src",
+    "prettier-write": "prettier --write src",
+    "test": "npm run test-only && npm run eslint && npm run prettier",
+    "test-only": "jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -32,29 +33,16 @@
     "url": "https://github.com/mljs/logistic-regression/issues"
   },
   "homepage": "https://github.com/mljs/logistic-regression#readme",
-  "jest": {
-    "testEnvironment": "node"
-  },
   "dependencies": {
-    "ml-matrix": "^6.5.0"
+    "ml-matrix": "^6.9.0"
   },
   "devDependencies": {
-    "@babel/plugin-transform-modules-commonjs": "^7.9.6",
-    "@types/jest": "^25.2.1",
-    "eslint": "^6.8.0",
-    "eslint-config-cheminfo": "^3.0.0",
-    "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-jest": "^23.8.2",
-    "eslint-plugin-prettier": "^3.1.3",
-    "jest": "^25.5.4",
-    "prettier": "^2.0.5",
-    "rollup": "^2.7.6"
-  },
-  "prettier": {
-    "arrowParens": "always",
-    "semi": true,
-    "singleQuote": true,
-    "tabWidth": 2,
-    "trailingComma": "all"
+    "@babel/plugin-transform-modules-commonjs": "^7.16.8",
+    "@types/jest": "^27.4.1",
+    "eslint": "^8.10.0",
+    "eslint-config-cheminfo": "^7.2.2",
+    "jest": "^27.5.1",
+    "prettier": "^2.5.1",
+    "rollup": "^2.69.0"
   }
 }
